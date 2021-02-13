@@ -1,21 +1,16 @@
-### String Concatenation ###
+### Guess the Number ###
+import random
 
-youtuber = "Gloria"
-# simple
-print("Subscribe to " + youtuber)
-# puts value of youtuber into curly braces
-print("Subscribe to {}".format(youtuber))
-#fstring
-print(f"Subscribe to {youtuber}")
+def guess(x):
+    random_number = random.randint(1,x)
+    guess = 0;
+    while guess != random_number:
+        guess = int(input(f'Guess the number I\'m thinking of from 1 and {x}: '))
+        print(guess)
+        if guess < random_number:
+            print("Too low, guess again!")
+        elif guess > random_number:
+            print("Too high, guess again!")
+    print(f"Congrats! The number was {random_number}")
 
-## madlibs ##
-adj = input("Adjective: ")
-verb = input("Verb: ")
-verb2 = input("Verb: ")
-famous_person = input("Famous Person: ")
-
-#using fstring, \ means new line
-madlib = f"Computer programming is so {adj}! It makes me so excited all the time because \
-I love to {verb}. Stay hydrated and {verb2} like you are {famous_person}!"
-
-print(madlib)
+guess(10)
