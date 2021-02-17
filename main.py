@@ -1,51 +1,27 @@
-### Hangman ###
-import random
-from words import words
-import string
+### Java vs. Python ###
 
+# Reading from console
 
-def get_valid_word(words):
-    computer_word = random.choice(words)
-    while '-' in computer_word or ' ' in computer_word:
-        computer_word = random.choice(words)
-    return computer_word.upper()
+# Java
+# Scanner x = new Scanner(System.in);
+# System.out.println("Enter a number: ")
+# int y = x.nextInt();
+# System.out.println("You entered: " + y)
 
-def play():
-    word = get_valid_word(words)
-    # creates a set of letters in word
-    word_letters = set(word)
-    alphabet = set(string.ascii_uppercase)
-    used_letters = set()
-    lives = 6
+# Python
+# x = input("Enter a number: ")
+# print("You entered", x)
 
-    while len(word_letters) > 0 and lives > 0:
+# Strings
 
-        print("You have", lives, "lives left.\nYou have already used these letters: ", " ".join(used_letters))
+# Java
+# String x = "input";
+# String y = x.substring(2);
+# String z = x.substring(x.length() -3)
+# boolean a = x.contains("pu")
 
-        word_list = [letter if letter in used_letters else '-' for letter in word]
-        print('Current word: ', ' '.join(word_list))
-
-        user_input = input('Guess a letter: ').upper()
-        if user_input in alphabet - used_letters:
-            used_letters.add(user_input)
-            if user_input in word_letters:
-                word_letters.remove(user_input)
-            else:
-                lives-=1
-                print("Letter is not in the word")
-
-        elif user_input in used_letters:
-            print("You have already used that letter. Please try again!")
-
-        else:
-            print("Invalid letter. Please try again!")
-    if lives == 0:
-        print("Sorry! Game over. The word was ", word)
-    else:
-        print("Congrats! You won!")
-
-play()
-
-
-
-
+# Python
+# x = "input"
+# y = x[2:]
+# z = x[-3:]
+# a = "pu" in x
