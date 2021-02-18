@@ -1,27 +1,45 @@
 ### Java vs. Python ###
 
-# Reading from console
+# Lists
 
 # Java
-# Scanner x = new Scanner(System.in);
-# System.out.println("Enter a number: ")
-# int y = x.nextInt();
-# System.out.println("You entered: " + y)
+# List list = new ArrayList();
+# list.add("house");
+# list.add("mouse");
+# list.add("blouse");
+# System.out.println(list);
+# System.out.println(list.size());
+# System.out.println(list.get(1));
+# list.add(1, "grouse")
+# System.out.println(list)
+# list.remove(1);
+# System.out.println(list)
 
 # Python
-# x = input("Enter a number: ")
-# print("You entered", x)
+# list = []
+# list.append("house")
+# list.append("mouse")
+# list.append("blouse")
+# print(list)
+# print(len(list))
+# print(list[1])
+# list.insert(1, "grouse")
+# print(list)
+# del(list[1:3])
+# print(list)
 
-# Strings
-
-# Java
-# String x = "input";
-# String y = x.substring(2);
-# String z = x.substring(x.length() -3)
-# boolean a = x.contains("pu")
-
-# Python
-# x = "input"
-# y = x[2:]
-# z = x[-3:]
-# a = "pu" in x
+# list2 = []
+# list2.append("house")
+# list2.append("mouse")
+# list2.append("blouse")
+# list1.extend(list2)
+# print(list1)
+# list3 = list + list2
+# print(list3)
+# list4 = []
+# list4.append(list)
+# list4.append(list2)
+# print(list4)
+# print(list4[1][2])
+# list4[1] = 4
+# print(list4)
