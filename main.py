@@ -1,17 +1,32 @@
 ### Java vs. Python ###
 
-# Tuples
+# Checking Equality
 
 # Java
-# Immutable Lists
+# Scanner reader = new Scanner();
+# String input = reader.nextLine();
+# String str = "house"
+# Even if you type "house" into the console,
+# will return false because not the same instance
+# System.out.println(str == input);
+# System.out.println(str.equals(input));
+# .equals() is usually modified in the class
 
 # Python
-# z = 2,3,4,5
-# x = "house", "moose", "goose"
-# y = x, 5, "Yes"
-# print(y[1:3])
-#Tuple with one element
-# a = 5,
-# print("house" in x)
-# print
+# x = input()
+# y = "house"
+# checks if exact same values
+# print(x == y)
+# checks if exact same objects
+# print(x is y)
 
+#Operators
+# <, >, <=, >=, != are the exact same in both!
+
+# Java
+# System.out.println(!(4 <5));
+# !, &&, ||
+
+# Python
+# print(not(4 < 5))
+# not, and, or
