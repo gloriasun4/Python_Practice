@@ -1,23 +1,56 @@
 ### Java vs. Python ###
 
-# if statements
+# while loops
 
 # Java
-# if(3 > 4) {
-# System.out.println("1");
-# }
-# else if (4 > 3) {
-# System.out.println("2");
-# }
-# else {
-# System.out.println("3");
+# int x = 0;
+# while (x < 5) {
+#   System.out.print(x + " ");
+#   x++;
 # }
 
 # Python
-# if 3 > 4:
-#     print('1')
-# elif 4 > 3:
-#     print('2')
+# x = 0
+# while x<5:
+#     print(x, end = " ")
+#     x+=1
+
+# for loops
+
+# Java
+# for (int i = 0; i < 5; i++) {
+#   System.out.print(i + " ");
+# }
+
+# Python
+# range goes from 0 to whatever is in range, exclusive
+# can also put a starting value ex. range (2,10)
+# increment range(2, 10, 3)
+# for x in range(5):
+#     print(x, end = " ")
+
+# for-each loops, break and continue statements
+
+# Java
+# int[] array = {1,2,3,4};
+# for(i in array) {
+#   System.out.print(i + " ");
+# }
+
+# Python
+# list = [1,2,3,4]
+# for x in list:
+#     if x == 3:
+# can replace break with continue
+#         break
+#     print(x, end=" ")
+
+# Python ONLY: else off of for loop
+# else body is execute if the loop is iterated fully
+# in this ex., if x == 3, then else will never be executed
+# for x in range(5):
+#     if x == 6:
+#         break
 # else:
-#     print('3')
+#     print('else entered')
 
