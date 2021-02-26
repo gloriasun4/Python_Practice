@@ -4,66 +4,45 @@ from math import log
 
 ### Algorithms ###
 
-# O(1) constant
-# prints first element in a list
+# Worst Case vs Best Case: can have very different Big-O times
 
 
-def func_constant(values):
-    print(values[0])
+def matcher(lst, match):
+    for x in lst:
+        if x == match:
+            return True
+    return False
 
 
-func_constant([1, 2, 3, 4, 5, 6, 7, 8])
+# Best case, item is at index one, O(1) constant
+matcher([1, 2, 3, 4, 5], 1)
+# Worst case, all indexes must be searched O(n) linear
+matcher([1, 2, 3, 4, 5], 6)
 
 
-# no matter how large the list, will always return only the first element
+# Space Complexity
 
-# O(n) linear
-# takes in a list and prints all values
-
-
-def func_linear(values):
-    for x in values:
-        print(x)
+def memory(n):
+    for x in range(n):  # O(n) time-wise / time complexity
+        print("Hello!")  # O(1) memory-wise/ space complexity: only stores one string
 
 
-func_linear([1, 2, 3, 4])
+memory(10)
 
+### Array Sequences ###
 
-# the larger the list, the bigger the BigO, scales linearly with n
+# Lists, Tuples, and Strings all support indexing
 
-# O(n^2) quadratic
-# prints pairs for every element in list
+""" Memory is stored in bits, there are 8 bits in a byte. UNICODE characters take 2 bytes each.
+All stored in a memory location. stored and retrieved in constant O(1) time"""
 
+# When creating a list that is part of another list, a new list is NOT created in memory.
+# The indexes change/ changing and creating pointers.
 
-def func_quad(values):
-    for x in values:
-        for y in values:
-            print(x, y)
+lst = [2, 3, 5, 7, 11, 13, 17, 19]
+temp = lst[3:6]
+print(temp)
 
-
-func_quad([1, 2, 3])
-""" algo operates n times n assignments, so for a length 3 list, 3^2 is 9
-two loops, one nested inside the other"""
-
-
-# Calculating the Scale of Big O
-# insignificant terms drop out of the notation
-# like taking limits of n to infinity
-
-# Algo with 3n operations is O(n). constants are insignificant because 3(infinity) is the same as infinity
-
-# Example algo with O(1 + n/2 + 10) is just O(n/2)
-
-
-def func_linear_mix(values):
-    print(values[0])
-
-    mid = len(values) // 2
-    for x in values[:mid]:
-        print(x)
-
-    for x in range(10):
-        print("Hello")
-
-
-func_linear_mix([1, 2, 3, 4, 5, 6, 7, 8])
+# When assigning new value, the index just points to a new location in memory, does not change lst
+temp[2] = 15
+print(temp)
