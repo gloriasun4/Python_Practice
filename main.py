@@ -1,34 +1,6 @@
 import timeit
 from math import log
 
-
-### Algorithms ###
-
-# Worst Case vs Best Case: can have very different Big-O times
-
-
-def matcher(lst, match):
-    for x in lst:
-        if x == match:
-            return True
-    return False
-
-
-# Best case, item is at index one, O(1) constant
-matcher([1, 2, 3, 4, 5], 1)
-# Worst case, all indexes must be searched O(n) linear
-matcher([1, 2, 3, 4, 5], 6)
-
-
-# Space Complexity
-
-def memory(n):
-    for x in range(n):  # O(n) time-wise / time complexity
-        print("Hello!")  # O(1) memory-wise/ space complexity: only stores one string
-
-
-memory(10)
-
 ### Array Sequences ###
 
 # Lists, Tuples, and Strings all support indexing
@@ -46,3 +18,20 @@ print(temp)
 # When assigning new value, the index just points to a new location in memory, does not change lst
 temp[2] = 15
 print(temp)
+
+# TODO sys api and .format()
+import sys
+
+n = 10
+data = []
+for i in range(n):
+    a = len(data)
+    b = sys.getsizeof(data)
+
+    print("Length: {0:3d}; Size in bytes: {1:42} ".format(a, b))
+
+    data.append(n)
+
+# takeaway: when initially declared, python makes some space for an empty array. once that array is filled up,
+# will assign a bigger array that point to the same values, then delete the original array, and make the
+# new array the "original" one. this process repeats as you add more values
