@@ -1,37 +1,59 @@
-import timeit
-from math import log
+### Dynamic Arrays ###
 
-### Array Sequences ###
+"""
+1) Given two strings, check to see if they are anagrams. An anagram is when the two strings
+can be written using the exact same letters.
+For example:
+"public relations" is an anagram of "crap built on lies"
+"clint eastwood" is an anagram of "old west action"
+Ignore space and capitalization.
+"""
 
-# Lists, Tuples, and Strings all support indexing
 
-""" Memory is stored in bits, there are 8 bits in a byte. UNICODE characters take 2 bytes each.
-All stored in a memory location. stored and retrieved in constant O(1) time"""
+# def anagrams(s1, s2):
+#     s1 = s1.replace(' ', '').lower()
+#     s2 = s2.replace(' ', '').lower()
+#
+#     return sorted(s1) == sorted(s2)
+#
+#
+# print(anagrams("god", "dog"))
+# print(anagrams("public relations", "crap built on lies"))
 
-# When creating a list that is part of another list, a new list is NOT created in memory.
-# The indexes change/ changing and creating pointers.
 
-lst = [2, 3, 5, 7, 11, 13, 17, 19]
-temp = lst[3:6]
-print(temp)
+# NOT an optimal solution because it uses python modules (sorted)
 
-# When assigning new value, the index just points to a new location in memory, does not change lst
-temp[2] = 15
-print(temp)
+# with counts and dictionaries
 
-# TODO sys api and .format()
-import sys
 
-n = 10
-data = []
-for i in range(n):
-    a = len(data)
-    b = sys.getsizeof(data)
+def anagrams2(s1, s2):
+    s1 = s1.replace(' ', '').lower()
+    s2 = s2.replace(' ', '').lower()
 
-    print("Length: {0:3d}; Size in bytes: {1:42} ".format(a, b))
+    if len(s1) != len(s2):
+        return False
 
-    data.append(n)
+    # empty dictionary
+    count = {}
 
-# takeaway: when initially declared, python makes some space for an empty array. once that array is filled up,
-# will assign a bigger array that point to the same values, then delete the original array, and make the
-# new array the "original" one. this process repeats as you add more values
+    for letter in s1:
+        if letter in count:
+            count[letter] += 1
+        else:
+            count[letter] = 1
+
+    for letter in s2:
+        if letter in count:
+            count[letter] -= 1
+        else:
+            count[letter] = 1
+
+    for k in count:
+        if count[k] != 0:
+            return False
+
+    return True
+
+
+print(anagrams2("god", "dog"))
+print(anagrams2("public relations", "crap built on lies"))
