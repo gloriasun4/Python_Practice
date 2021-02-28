@@ -1,59 +1,30 @@
-### Dynamic Arrays ###
+### Array Algorithms ###
 
-"""
-1) Given two strings, check to see if they are anagrams. An anagram is when the two strings
-can be written using the exact same letters.
-For example:
-"public relations" is an anagram of "crap built on lies"
-"clint eastwood" is an anagram of "old west action"
-Ignore space and capitalization.
-"""
+'''
+Array Pair Sum
+Given an integer array, output all the unique pairs that sum up to a specific
+value k.
+'''
 
 
-# def anagrams(s1, s2):
-#     s1 = s1.replace(' ', '').lower()
-#     s2 = s2.replace(' ', '').lower()
-#
-#     return sorted(s1) == sorted(s2)
-#
-#
-# print(anagrams("god", "dog"))
-# print(anagrams("public relations", "crap built on lies"))
+def pair_sum(array, k):
+    if len(array) <= 1:
+        print('Too small')
 
+    seen = set()
+    output = set()
 
-# NOT an optimal solution because it uses python modules (sorted)
+    for num in array:
+        target = k - num
 
-# with counts and dictionaries
+        if target not in seen:
+            seen.add(num)
 
-
-def anagrams2(s1, s2):
-    s1 = s1.replace(' ', '').lower()
-    s2 = s2.replace(' ', '').lower()
-
-    if len(s1) != len(s2):
-        return False
-
-    # empty dictionary
-    count = {}
-
-    for letter in s1:
-        if letter in count:
-            count[letter] += 1
         else:
-            count[letter] = 1
+            output.add((min(num, target), max(num, target)))
 
-    for letter in s2:
-        if letter in count:
-            count[letter] -= 1
-        else:
-            count[letter] = 1
-
-    for k in count:
-        if count[k] != 0:
-            return False
-
-    return True
+    print('\n'.join(map(str, list(output))))
 
 
-print(anagrams2("god", "dog"))
-print(anagrams2("public relations", "crap built on lies"))
+pair_sum([1, 3, 2, 2], 4)
+# should return (1, 3) and (2, 2)
