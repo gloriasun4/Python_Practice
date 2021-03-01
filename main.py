@@ -1,30 +1,37 @@
-### Array Algorithms ###
+### Largest Sum ###
 
-'''
-Array Pair Sum
-Given an integer array, output all the unique pairs that sum up to a specific
-value k.
-'''
+""" Take an array with positive and negative integers
+and find the largest continuous sum"""
 
 
-def pair_sum(array, k):
-    if len(array) <= 1:
-        print('Too small')
+def largest(arr):
+    if len(arr) == 0:
+        print('Too small!')
 
-    seen = set()
-    output = set()
+    max_sum = current_sum = arr[0]
 
-    for num in array:
-        target = k - num
+    for num in arr[1:]:
+        current_sum = max(current_sum + num, num)
+        max_sum = max(max_sum, current_sum)
 
-        if target not in seen:
-            seen.add(num)
-
-        else:
-            output.add((min(num, target), max(num, target)))
-
-    print('\n'.join(map(str, list(output))))
+    return max_sum
 
 
-pair_sum([1, 3, 2, 2], 4)
-# should return (1, 3) and (2, 2)
+print(largest([32,46,567,-435,3,64]))
+
+### Reversing a String ###
+
+
+""" 
+Given a string of words, reverse all the words
+
+start = "This is the best
+finish = best the is This
+"""
+
+# built in python function
+# " ".join(reversed(s.split()))
+# " ".join(s.split()[::-1])
+# start, stop, end. if both start and stop are :,
+# then go from beginning to end or vice versa
+
