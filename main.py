@@ -35,3 +35,21 @@ finish = best the is This
 # start, stop, end. if both start and stop are :,
 # then go from beginning to end or vice versa
 
+
+def reverse(s):
+    length = len(s)
+    i = 0
+    words = []
+    spaces = [" "]
+
+    while i < length:
+        if s[i] not in spaces:
+            start = i
+            while i < length and s[i] not in spaces:
+                i+=1
+            words.append(s[start: i])
+        i+=1
+
+    return " ".join(reversed(words))
+
+print(reverse("This is the best"))
