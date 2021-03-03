@@ -1,55 +1,45 @@
-### Largest Sum ###
+### Array Analysis ###
 
-""" Take an array with positive and negative integers
-and find the largest continuous sum"""
+"""
+Given 2 arrays (not duplicates)
+Is 1 array a rotation of another - return True/False
+same size and elements but start index is different
+elements that are cut off at the end get "rotated" to the front
 
+BigO(n) we are going through each array 2x but o(2n) = O(n) since
+constants are insignificant
 
-def largest(arr):
-    if len(arr) == 0:
-        print('Too small!')
-
-    max_sum = current_sum = arr[0]
-
-    for num in arr[1:]:
-        current_sum = max(current_sum + num, num)
-        max_sum = max(max_sum, current_sum)
-
-    return max_sum
-
-
-print(largest([32,46,567,-435,3,64]))
-
-### Reversing a String ###
-
-
-""" 
-Given a string of words, reverse all the words
-
-start = "This is the best
-finish = best the is This
+select an indexed position in list2 and get its value. Find same element
+in list2 and check index for index from there
+if any variation then we know it's false
+Getting to the last item without a false means true
 """
 
-# built in python function
-# " ".join(reversed(s.split()))
-# " ".join(s.split()[::-1])
-# start, stop, end. if both start and stop are :,
-# then go from beginning to end or vice versa
 
+def rotation(list1, list2):
+    if len(list1) != len(list2):
+        return False
 
-def reverse(s):
-    length = len(s)
     i = 0
-    words = []
-    spaces = [" "]
+    first = list1[0]
 
-    while i < length:
-        if s[i] not in spaces:
-            start = i
-            while i < length and s[i] not in spaces:
-                i+=1
-            words.append(s[start: i])
-        i+=1
+    for x in range(len(list2)):
+        if list2[x] == first:
+            i = x
+            break
 
-    return " ".join(reversed(words))
+    if i == 0:
+        return False
 
-print(reverse("This is the best"))
+    for y in range(len(list1)):
+        i2 = (i + y) % len(list1)
+
+        if list1[y] != list2[i2]:
+            return False
+
+    return True
+
+
+print(rotation([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]))
+print(rotation([2, 3, 4], [3, 4, 5]))
+print(rotation([34, 78, 19, 20, 33], [20, 33, 34, 78, 19]))
