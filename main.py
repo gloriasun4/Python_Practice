@@ -1,45 +1,32 @@
-### Array Analysis ###
+### Array Common Elements ###
 
 """
-Given 2 arrays (not duplicates)
-Is 1 array a rotation of another - return True/False
-same size and elements but start index is different
-elements that are cut off at the end get "rotated" to the front
 
-BigO(n) we are going through each array 2x but o(2n) = O(n) since
-constants are insignificant
+Common Elements in Two Sorted Arrays
+return a sorted array of the common elements between two sorted arrays of integers
+Ex: [1,3,4,6,7,9] and [1,2,4,5,9,10] would return [1,4,9]
 
-select an indexed position in list2 and get its value. Find same element
-in list2 and check index for index from there
-if any variation then we know it's false
-Getting to the last item without a false means true
 """
 
 
-def rotation(list1, list2):
-    if len(list1) != len(list2):
-        return False
+def common_elements(a, b):
+    p1 = 0
+    p2 = 0
 
-    i = 0
-    first = list1[0]
+    result = []
 
-    for x in range(len(list2)):
-        if list2[x] == first:
-            i = x
-            break
+    while p1 < len(a) and p2 < len(b):
+        if a[p1] == b[p2]:
+            result.append(a[p1])
+            p1 += 1
+            p2 += 1
+        elif a[p1] > b[p2]:
+            p2 += 1
+        else:
+            p1 += 1
 
-    if i == 0:
-        return False
-
-    for y in range(len(list1)):
-        i2 = (i + y) % len(list1)
-
-        if list1[y] != list2[i2]:
-            return False
-
-    return True
+    return result
 
 
-print(rotation([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]))
-print(rotation([2, 3, 4], [3, 4, 5]))
-print(rotation([34, 78, 19, 20, 33], [20, 33, 34, 78, 19]))
+print(common_elements([1, 3, 4, 6, 7, 9], [1, 2, 4, 5, 9, 10]))
+print(common_elements(sorted([2, 3, 456, 8, 2, 34, 6, 78, 19, 23, 4]), [1, 2, 4, 5, 9, 10]))
