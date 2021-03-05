@@ -1,32 +1,36 @@
-### Array Common Elements ###
+### Minesweeper ###
 
 """
 
-Common Elements in Two Sorted Arrays
-return a sorted array of the common elements between two sorted arrays of integers
-Ex: [1,3,4,6,7,9] and [1,2,4,5,9,10] would return [1,4,9]
+Write a function that will take 2 arguments:
+bombs = a list of bomb locations
+rows, columns
+Ex. mine_sweeper([0,0], [0,1], 3, 4)
+
+returns an 3 x 4 array
+with cells filled with number meaning the number of bombs surrounding it
+(-1) = bomb
+Ex. returns
+[[-1,-1,1,0],
+[2,2,1,0],
+[0,0,0,0]]
 
 """
 
 
-def common_elements(a, b):
-    p1 = 0
-    p2 = 0
+def mine_sweeper(bombs, rows, cols):
+    field = [[0 for a in range(cols)] for b in range(rows)]
+    for bomb in bombs:
+        r = bomb[0]
+        c = bomb[1]
+        field[r][c] = -1
+        for j in range(-1, 2):
+            for k in range(-1, 2):
+                if [r + j, c + k] in bombs or r + j < 0 or c + k < 0 or (j == 0 and k == 0):
+                    continue
+                field[r + j][c + k] += 1
 
-    result = []
-
-    while p1 < len(a) and p2 < len(b):
-        if a[p1] == b[p2]:
-            result.append(a[p1])
-            p1 += 1
-            p2 += 1
-        elif a[p1] > b[p2]:
-            p2 += 1
-        else:
-            p1 += 1
-
-    return result
+    return field
 
 
-print(common_elements([1, 3, 4, 6, 7, 9], [1, 2, 4, 5, 9, 10]))
-print(common_elements(sorted([2, 3, 456, 8, 2, 34, 6, 78, 19, 23, 4]), [1, 2, 4, 5, 9, 10]))
+print(mine_sweeper([[0, 0], [0, 1]], 3, 4))
