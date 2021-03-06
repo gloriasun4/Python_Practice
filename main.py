@@ -1,36 +1,26 @@
-### Minesweeper ###
+### Frequent Count ###
 
 """
-
-Write a function that will take 2 arguments:
-bombs = a list of bomb locations
-rows, columns
-Ex. mine_sweeper([0,0], [0,1], 3, 4)
-
-returns an 3 x 4 array
-with cells filled with number meaning the number of bombs surrounding it
-(-1) = bomb
-Ex. returns
-[[-1,-1,1,0],
-[2,2,1,0],
-[0,0,0,0]]
-
+Given an array what is the most frequently occurring element
 """
 
 
-def mine_sweeper(bombs, rows, cols):
-    field = [[0 for a in range(cols)] for b in range(rows)]
-    for bomb in bombs:
-        r = bomb[0]
-        c = bomb[1]
-        field[r][c] = -1
-        for j in range(-1, 2):
-            for k in range(-1, 2):
-                if [r + j, c + k] in bombs or r + j < 0 or c + k < 0 or (j == 0 and k == 0):
-                    continue
-                field[r + j][c + k] += 1
+def most_frequent(lst):
+    count = {}
+    max_count = 0
+    max_item = None
 
-    return field
+    for i in lst:
+        if i not in count:
+            count[i] = 1
+        else:
+            count[i] += 1
+
+        if count[i] > max_count:
+            max_count = count[i]
+            max_item = i
+
+    return max_item
 
 
-print(mine_sweeper([[0, 0], [0, 1]], 3, 4))
+print(most_frequent([1, 1, 1, 2, 2, 3, 3, 3, 1]))
