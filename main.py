@@ -1,33 +1,55 @@
-### Unique Characters ###
+### Non-Repeat Elements ###
 
 """
-Given a string, are all characters unique?
-returns a boolean
-"""
-
-
-# with python built-in structures
-
-"""
-def unique(s):
-    s = s.replace(" ", "")
-    return len(set(s)) == len(s)
-
-
-print(unique("a b cde f"))
+Take a string and return character that never repeats
+if multiple uniques then return only the first unique
 """
 
 
-def unique(s):
-    s = s.replace(" ", "")
-    characters = set()
+# just returning the first unique character
+
+# def unique(s):
+#     s = s.replace(" ", "").lower()
+#     chars = {}
+#
+#     for letter in s:
+#         if letter in chars:
+#             chars[letter] += 1
+#         else:
+#             chars[letter] = 1
+#
+#     for letter in s:
+#         if chars[letter] == 1:
+#             return letter
+#
+#     return None
+
+
+# print(unique("I Peel Ape Bananas"))
+
+
+# returning all unique characters
+
+def unique2(s):
+    s = s.replace(" ", "").lower()
+    chars = {}
 
     for letter in s:
-        if letter in characters:
-            return False
+        if letter in chars:
+            chars[letter] += 1
         else:
-            characters.add(letter)
-    return True
+            chars[letter] = 1
+
+    all_uniques = []
+
+# sorts the dictionary by key value
+# y = sorted(chars.items(), key=lambda x: x[1])
+
+    for letter in s:
+        if chars[letter] == 1:
+            all_uniques.append(letter)
+
+    return all_uniques
 
 
-print(unique("a bb cde f"))
+print(unique2("I Peel Ape Bananas"))
