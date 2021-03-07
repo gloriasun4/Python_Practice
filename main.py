@@ -1,26 +1,33 @@
-### Frequent Count ###
+### Unique Characters ###
 
 """
-Given an array what is the most frequently occurring element
+Given a string, are all characters unique?
+returns a boolean
 """
 
 
-def most_frequent(lst):
-    count = {}
-    max_count = 0
-    max_item = None
+# with python built-in structures
 
-    for i in lst:
-        if i not in count:
-            count[i] = 1
+"""
+def unique(s):
+    s = s.replace(" ", "")
+    return len(set(s)) == len(s)
+
+
+print(unique("a b cde f"))
+"""
+
+
+def unique(s):
+    s = s.replace(" ", "")
+    characters = set()
+
+    for letter in s:
+        if letter in characters:
+            return False
         else:
-            count[i] += 1
-
-        if count[i] > max_count:
-            max_count = count[i]
-            max_item = i
-
-    return max_item
+            characters.add(letter)
+    return True
 
 
-print(most_frequent([1, 1, 1, 2, 2, 3, 3, 3, 1]))
+print(unique("a bb cde f"))
