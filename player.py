@@ -29,7 +29,7 @@ class HumanPlayer(Player):
         val = None
         # try, except format good for looping until valid value is passed
         while not valid_square:
-            square = input(self.letter + '\'s turn. Input move (0-9):')
+            square = input(self.letter + '\'s turn. Input move (0-8):')
             try:
                 val = int(square)
                 if val not in game.available_moves():
