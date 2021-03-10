@@ -38,3 +38,27 @@ class HumanPlayer(Player):
             except ValueError:
                 print('Invalid square. Try again!')
         return val
+
+    def genius_computer_player(player):
+        def __init__(self, letter):
+            super().__init__(letter)
+
+        def get_move(self, game):
+            if len(game.available_moves()) == 9:
+                square = random.choice(game.available_moves())
+            else:
+                square = self.minimax(game, self.letter)
+            return square
+
+        def minimax(self, state, player):
+            max_player = self.letter
+            other_player = 'O' if player == 'X' else 'X'
+
+            if state.current_winner == other_player:
+                player_num = 1 if other_player == max_player else -1
+                return {'position': None, 'score': player_num * (state.num_empty_square() + 1)}
+
+            elif not state.empty_squares():
+                return {'position': None, 'score': 0}
+
+
